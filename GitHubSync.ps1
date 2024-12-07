@@ -61,7 +61,7 @@ Do { # show menu
     }
     $msg= "Select an Action"
     $actionchoices = @("E&xit","&Sync","&Choose repository","&Browse")
-    $action=AskForChoice -message $msg -choices $actionchoices -defaultChoice 0
+    $action=AskForChoice -message $msg -choices $actionchoices -defaultChoice 1
     If ($action -eq 0) { # Exit
         $bShowmenu=$false
     } # Exit
