@@ -31,14 +31,20 @@ Do { # show menu
     Write-Host ""
     Write-Host "Git Repository Actions."
     Write-Host ""
-    Write-Host "Folder for syncing repos: " -NoNewline
+    Write-Host "      Root Folder: " -NoNewline
     if ($settings.RepoRoot -eq "<none>") {
-        Write-Host $settings.RepoRoot -ForegroundColor Green -NoNewline
+        Write-Host $settings.RepoRoot -ForegroundColor Yellow -NoNewline
         Write-Host " Use [C] to create a repo sync pair." -ForegroundColor Yellow
     } 
     Else {
         Write-Host $settings.RepoRoot -ForegroundColor Green
     }
+    $repo_folder = "$($settings.RepoRoot)\$($settings.RepoSelect)"
+    $repo_online = "https://github.com/$($settings.GitName)/$($settings.RepoSelect)" 
+    Write-host " Local Repository: " -NoNewline
+    Write-host                    $repo_folder -ForegroundColor Green
+    Write-host "Online Repository: " -NoNewline
+    Write-host                    $repo_online -ForegroundColor Green
     Write-Host ""
     Write-Host "How it works:"
     Write-Host "- [C]reate a root sync folder and complete the inital setup with your Git account"
@@ -50,7 +56,7 @@ Do { # show menu
     Write-Host $settings.RepoSelect -NoNewline -ForegroundColor Green
     Write-Host ")" 
     Write-Host "C - Choose or create a repository sync folder"
-    Write-Host "B - Browse to this folder"
+    Write-Host "B - Browse to this repository (local and online)"
     Write-Host "-----------------------------------------------------------------------------"
     $git_exe  = "$($env:ProgramFiles)\Git\usr\bin\mintty.exe"
     if (-not (Test-Path $git_exe)) {
